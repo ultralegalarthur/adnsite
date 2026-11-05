@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADV Store - Painel de Produtos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>ADV STORE - ADMIN</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('inicio') }}">Ver Loja</a></li>
+                <li><a href="{{ url_for('exibir_produtos') }}">Gerenciar Produtos</a></li>
+                <li><a href="{{ url_for('cadastro_produto') }}">Novo Produto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-carrinho">
+        <h2>Gestão de Estoque Streetwear</h2>
+        
+        <div style="margin-bottom: 2rem;">
+            <a href="{{ url_for('cadastro_produto') }}" class="btn" style="width: auto; display: inline-block;">+ Cadastrar Novo Item</a>
+        </div>
+
+        {% if produtos %}
+            <table class="tabela-carrinho">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imagem</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Tamanho</th>
+                        <th>Categoria</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produto in produtos %}
+                        <tr>
+                            <td>{{ produto.id_produto }}</td>
+                            <td><img src="{{ url_for('static', filename='img/' + produto.imagem) }}" alt="{{ produto.nome }}" width="50"></td>
+                            <td>{{ produto.nome }}</td>
+                            <td>R$ {{ "%.2f"|format(produto.preco|float) }}</td>
+                            <td>{{ produto.tamanho }}</td>
+                            <td>{{ produto.categoria }}</td>
+                            <td>
+                                <a href="{{ url_for('editar_produto', id_produto=produto.id_produto) }}" class="btn" style="width: auto; display: inline-block; padding: 0.4rem 0.8rem; background-color: #333333; color: #fff; border-color: #555555; margin-right: 5px;">Editar</a>
+                                <a href="{{ url_for('excluir_produto', id_produto=produto.id_produto) }}" class="btn-excluir" onclick="return confirm('Excluir este produto do sistema?')">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="color: #888888;">Nenhum produto cadastrado no banco de dados.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ADV STORE - PAINEL ADMINISTRATIVO</p>
+    </footer>
+</body>
+</html>

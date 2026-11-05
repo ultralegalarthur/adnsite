@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADV Store - Editar Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>ADV STORE - ADMIN</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('inicio') }}">Ver Loja</a></li>
+                <li><a href="{{ url_for('exibir_produtos') }}">Gerenciar Produtos</a></li>
+                <li><a href="{{ url_for('cadastro_produto') }}">Novo Produto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-container">
+        <h2>Editar Produto</h2>
+        
+        <form action="{{ url_for('atualizar_produto') }}" method="POST">
+            <input type="hidden" name="id_produto" value="{{ produto.id_produto }}">
+
+            <div class="campo">
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" name="nome" value="{{ produto.nome }}" required>
+            </div>
+
+            <div class="campo">
+                <label for="preco">Preço (R$):</label>
+                <input type="number" step="0.01" id="preco" name="preco" value="{{ produto.preco }}" required>
+            </div>
+
+            <div class="campo">
+                <label for="tamanho">Tamanho:</label>
+                <select id="tamanho" name="tamanho" required>
+                    <option value="P" {% if produto.tamanho == 'P' %}selected{% endif %}>P</option>
+                    <option value="M" {% if produto.tamanho == 'M' %}selected{% endif %}>M</option>
+                    <option value="G" {% if produto.tamanho == 'G' %}selected{% endif %}>G</option>
+                    <option value="GG" {% if produto.tamanho == 'GG' %}selected{% endif %}>GG</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="colecionador" {% if produto.categoria == 'colecionador' %}selected{% endif %}>Oversized / Essentials</option>
+                    <option value="starwars" {% if produto.categoria == 'starwars' %}selected{% endif %}>Edição Limitada</option>
+                    <option value="geral" {% if produto.categoria == 'geral' %}selected{% endif %}>Geral / Drops</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="imagem">Nome do Arquivo da Imagem:</label>
+                <input type="text" id="imagem" name="imagem" value="{{ produto.imagem }}" required>
+            </div>
+
+            <div class="campo">
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" rows="4">{{ produto.descricao }}</textarea>
+            </div>
+
+            <button type="submit" class="btn">Atualizar Produto</button>
+            <a href="{{ url_for('exibir_produtos') }}" class="btn" style="background-color: transparent; color: #888888; border-color: #333333; margin-top: 10px;">Cancelar</a>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ADV STORE - PAINEL ADMINISTRATIVO</p>
+    </footer>
+</body>
+</html>

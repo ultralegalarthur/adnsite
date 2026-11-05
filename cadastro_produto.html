@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADV Store - Cadastrar Produto Streetwear</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>ADV STORE - ADMIN</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('inicio') }}">Ver Loja</a></li>
+                <li><a href="{{ url_for('exibir_produtos') }}">Gerenciar Produtos</a></li>
+                <li><a href="{{ url_for('cadastro_produto') }}">Novo Produto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-container">
+        <h2>Cadastrar Item Streetwear</h2>
+        
+        <form action="{{ url_for('criar_produto') }}" method="POST">
+            <div class="campo">
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex: Camiseta Oversized Heavyweight Black" required>
+            </div>
+
+            <div class="campo">
+                <label for="preco">Preço (R$):</label>
+                <input type="number" step="0.01" id="preco" name="preco" placeholder="Ex: 139.90" required>
+            </div>
+
+            <div class="campo">
+                <label for="tamanho">Tamanho:</label>
+                <select id="tamanho" name="tamanho" required>
+                    <option value="P">P</option>
+                    <option value="M" selected>M</option>
+                    <option value="G">G</option>
+                    <option value="GG">GG</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="colecionador">Oversized / Essentials</option>
+                    <option value="starwars">Edição Limitada</option>
+                    <option value="geral">Geral / Drops</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="imagem">Nome do Arquivo da Imagem:</label>
+                <input type="text" id="imagem" name="imagem" placeholder="Ex: camiseta-berserk-classica.jpg" required>
+                <small>Gravado no diretório static/img/</small>
+            </div>
+
+            <div class="campo">
+                <label for="descricao">Descrição do Produto:</label>
+                <textarea id="descricao" name="descricao" rows="4" placeholder="Modelagem boxy, 100% algodão 260g..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">Salvar Produto</button>
+            <a href="{{ url_for('exibir_produtos') }}" class="btn" style="background-color: transparent; color: #888888; border-color: #333333; margin-top: 10px;">Cancelar</a>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ADV STORE - PAINEL ADMINISTRATIVO</p>
+    </footer>
+</body>
+</html>

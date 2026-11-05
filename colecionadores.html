@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADV Store - Line Essentials Oversized</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>ADV STORE</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('inicio') }}">Home</a></li>
+                <li><a href="{{ url_for('novidades') }}">Drops / Novidades</a></li>
+                <li><a href="{{ url_for('colecionadores') }}">Oversized / Essentials</a></li>
+                <li><a href="{{ url_for('starwars') }}">Edições Limitadas</a></li>
+                <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                <li><a href="{{ url_for('carrinho') }}">Carrinho</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Linha Essentials / Caimento Oversized</h2>
+        <div class="grid-produtos">
+            {% if produtos %}
+                {% for produto in produtos %}
+                    <div class="card-produto">
+                        <img src="{{ url_for('static', filename='img/' + produto.imagem) }}" alt="{{ produto.nome }}">
+                        <h3>{{ produto.nome }}</h3>
+                        <p class="preco">R$ {{ "%.2f"|format(produto.preco|float) }}</p>
+                        <a href="{{ url_for('adicionar_carrinho', id_produto=produto.id_produto) }}" class="btn">Comprar</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="card-produto">
+                    <img src="{{ url_for('static', filename='img/camiseta-berserk-simbolo.jpg') }}" alt="Camiseta Heavyweight Minimalist">
+                    <h3>Camiseta Heavyweight Minimalist Black</h3>
+                    <p class="preco">R$ 159,90</p>
+                    <a href="{{ url_for('carrinho') }}" class="btn">Comprar</a>
+                </div>
+                <div class="card-produto">
+                    <img src="{{ url_for('static', filename='img/camiseta-berserk-estampa-horizontal.jpg') }}" alt="Camiseta Streetwear Back Print">
+                    <h3>Camiseta Streetwear Back Graphic</h3>
+                    <p class="preco">R$ 149,90</p>
+                    <a href="{{ url_for('carrinho') }}" class="btn">Comprar</a>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ADV STORE - STREETWEAR CULTURE</p>
+    </footer>
+</body>
+</html>

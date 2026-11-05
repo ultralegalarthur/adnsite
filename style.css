@@ -1,0 +1,373 @@
+/* ==========================================================================
+   ADV STORE - STREETWEAR MASCULINO (PALETA PRETO, BRANCO E CINZA)
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-black: #0a0a0a;
+    --bg-card: #141414;
+    --bg-input: #1f1f1f;
+    --accent-white: #ffffff;
+    --accent-gray: #888888;
+    --border-gray: #2a2a2a;
+    --light-gray: #e0e0e0;
+    --hover-white: #dddddd;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--accent-white);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header e Navegação Minimalista */
+header {
+    background-color: #000000;
+    padding: 1.8rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-gray);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo h1 {
+    color: var(--accent-white);
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--accent-gray);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+}
+
+nav a:hover {
+    color: var(--accent-white);
+    border-bottom: 2px solid var(--accent-white);
+}
+
+/* Layout Principal */
+main {
+    flex: 1;
+    padding: 2.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Banner Streetwear */
+.banner {
+    background: #111111;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 0px;
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-gray);
+    text-transform: uppercase;
+}
+
+.banner h2 {
+    font-size: 2.8rem;
+    color: var(--accent-white);
+    letter-spacing: 3px;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+}
+
+.banner p {
+    color: var(--accent-gray);
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+/* Titulos de Seção */
+.produtos h2, main > h2 {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    border-bottom: 1px solid var(--border-gray);
+    padding-bottom: 0.8rem;
+    color: var(--accent-white);
+}
+
+/* Grid e Cards de Produtos */
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2.5rem;
+}
+
+.card-produto {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gray);
+    border-radius: 0px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.card-produto:hover {
+    border-color: var(--accent-white);
+    transform: translateY(-4px);
+}
+
+.card-produto img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 0px;
+    margin-bottom: 1.2rem;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.card-produto:hover img {
+    filter: grayscale(0%);
+}
+
+.card-produto h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--accent-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-produto .preco {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent-white);
+    margin-bottom: 0.4rem;
+}
+
+.card-produto .tamanho {
+    color: var(--accent-gray);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* Botões Monocromáticos */
+.btn {
+    display: block;
+    background-color: var(--accent-white);
+    color: #000000;
+    padding: 0.85rem 1.2rem;
+    text-decoration: none;
+    font-weight: 900;
+    border: 1px solid var(--accent-white);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+}
+
+.btn:hover {
+    background-color: #000000;
+    color: var(--accent-white);
+}
+
+.btn-excluir {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--accent-white);
+    padding: 0.5rem 0.9rem;
+    text-decoration: none;
+    font-weight: 800;
+    border: 1px solid var(--border-gray);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.btn-excluir:hover {
+    border-color: var(--accent-white);
+    background-color: #222222;
+}
+
+/* Formulários */
+.form-container {
+    background-color: var(--bg-card);
+    padding: 3rem 2.5rem;
+    border-radius: 0px;
+    max-width: 520px;
+    margin: 2rem auto;
+    border: 1px solid var(--border-gray);
+}
+
+.form-container h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--accent-white);
+    letter-spacing: 2px;
+}
+
+.campo {
+    margin-bottom: 1.4rem;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-gray);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.campo input, 
+.campo select, 
+.campo textarea {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-gray);
+    border-radius: 0px;
+    color: var(--accent-white);
+    font-size: 0.95rem;
+}
+
+.campo input:focus, 
+.campo select:focus, 
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--accent-white);
+}
+
+.campo small {
+    display: block;
+    color: var(--accent-gray);
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+}
+
+.form-container p {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: var(--accent-gray);
+    font-size: 0.9rem;
+}
+
+.form-container p a {
+    color: var(--accent-white);
+    text-decoration: underline;
+}
+
+/* Tabelas (Carrinho & Admin) */
+.container-carrinho {
+    width: 100%;
+}
+
+.tabela-carrinho {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gray);
+}
+
+.tabela-carrinho th, 
+.tabela-carrinho td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.tabela-carrinho th {
+    background-color: #000000;
+    color: var(--accent-white);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+
+.tabela-carrinho td {
+    color: var(--light-gray);
+}
+
+.tabela-carrinho td img {
+    object-fit: cover;
+    filter: grayscale(30%);
+}
+
+.finalizar-compra {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.finalizar-compra .btn {
+    width: auto;
+    padding: 1rem 2.5rem;
+}
+
+/* Footer Minimalista */
+footer {
+    background-color: #000000;
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-gray);
+    color: var(--accent-gray);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+
+    nav ul {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .tabela-carrinho {
+        display: block;
+        overflow-x: auto;
+    }
+}

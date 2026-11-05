@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADV Store - Carrinho de Compras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>ADV STORE</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('inicio') }}">Home</a></li>
+                <li><a href="{{ url_for('novidades') }}">Drops / Novidades</a></li>
+                <li><a href="{{ url_for('colecionadores') }}">Oversized / Essentials</a></li>
+                <li><a href="{{ url_for('starwars') }}">Edições Limitadas</a></li>
+                <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                <li><a href="{{ url_for('carrinho') }}">Carrinho</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-carrinho">
+        <h2>Seu Carrinho de Compras</h2>
+        
+        {% if itens %}
+            <table class="tabela-carrinho">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Qtd</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in itens %}
+                        <tr>
+                            <td><img src="{{ url_for('static', filename='img/' + item.imagem) }}" alt="{{ item.nome }}" width="60"></td>
+                            <td>{{ item.nome }}</td>
+                            <td>R$ {{ "%.2f"|format(item.preco|float) }}</td>
+                            <td>{{ item.quantidade }}</td>
+                            <td>
+                                <a href="{{ url_for('remover_carrinho', id_item=item.id_item) }}" class="btn-excluir">Remover</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="finalizar-compra">
+                <a href="#" class="btn">Finalizar Pedido</a>
+            </div>
+        {% else %}
+            <p style="color: #888888; margin-bottom: 1.5rem;">Seu carrinho está vazio no momento.</p>
+            <a href="{{ url_for('inicio') }}" class="btn" style="width: auto; display: inline-block;">Ver Coleção</a>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ADV STORE - STREETWEAR CULTURE</p>
+    </footer>
+</body>
+</html>
